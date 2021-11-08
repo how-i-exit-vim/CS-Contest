@@ -1,10 +1,15 @@
 import sys
 
+a = ""
+c = sys.stdin.read(1)
+while c != '0':
+    a = a + c
+    c = sys.stdin.read(1)
+
 ms = []
-for a in sys.stdin:
-    a = a[:-3]
-    m = [int(c) for c in a.split()]
-    ms = m
+a = a.strip()
+m = [int(c) for c in a.split()]
+ms = m
 
 corps = []
 for m in ms:
