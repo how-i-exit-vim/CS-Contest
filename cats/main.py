@@ -1,4 +1,5 @@
 import sys
+from numpy import array, transpose
 
 def solve(r, c):
    matrix = [[0]*len(c) for _ in range(len(r))]
@@ -49,10 +50,11 @@ for a in sys.stdin:
     m = [int(c) for c in a.split()]
     ms.append(m)
 
-rowSum = ms[0]
-colSum = ms[1]
+rowSum = ms[1]
+colSum = ms[0]
 
 x = solve(rowSum, colSum)
+
 for i in x:
     for j in range(len(i)):
         print(i[j], end="")
