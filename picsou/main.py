@@ -2,7 +2,8 @@ import sys
 
 nb = 0
 c = 0
-ms = []
+ms = [] # nb list
+
 for a in sys.stdin:
     a = a[:-1]
     d = ""
@@ -18,7 +19,7 @@ for (i,d) in ms:
 
 nb = str(nb)
 nb = nb[:-c] + '.' + nb[-c:]
-nb = nb.strip("0")
+nb = nb.lstrip("0")
 nb = nb.strip(".")
 if nb == "":
     nb = "0"
