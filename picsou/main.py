@@ -1,32 +1,32 @@
 import sys
 
-nb = 0
-c = 0
-ms = [] # nb list
-
+l = []
 for a in sys.stdin:
-    a = a[:-1]
-    d = ""
-    if "." in a:
-        n, d = a.split(".")
-        c = max(c, len(d))
-        a = n+d
-    ms.append((a, len(d)))
+    l.append(a[:-1])
 
-for (i,d) in ms:
-    i = i + "0"*(c-d)
-    nb += int(i)
+dmax = 0
+for x in l:
+    if "." in x:
+        n, d = x.split('.')
+        dmax = max(dmax, len(d))
 
-nb = str(nb)
-if c != 0:
-    n, d = nb[:-c], nb[-c:]
-    n = n.lstrip("0")
+res = 0
+for x in l:
+    if "." in x:
+        n, d = x.split('.')
+        x = n + d + "0"*(dmax - len(d))
+    else:
+        x = x + "0"*dmax
+    res += int(x)
+
+res = str(res)
+if dmax != 0:
+    n, d = res[:-dmax], res[-dmax:]
     d = d.rstrip("0")
-    nb = n + '.' + d
-    nb = nb.strip(".")
+    res = n + '.' + d
+    if res[0] == ".":
+        res = "0" + res
+    if res[-1] == ".":
+        res = res[:-1]
 
-if nb == "":
-    nb = "0"
-nb = nb.strip(" ")
-print(nb)
-
+print(res)
