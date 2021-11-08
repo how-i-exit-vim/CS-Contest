@@ -18,9 +18,12 @@ for (i,d) in ms:
     nb += int(i)
 
 nb = str(nb)
-nb = nb[:-c] + '.' + nb[-c:]
-nb = nb.lstrip("0")
+n, d = nb[:-c], nb[-c:]
+n = n.lstrip("0")
+d = d.rstrip("0")
+nb = n + '.' + d
 nb = nb.strip(".")
+
 if nb == "":
     nb = "0"
 nb = nb.strip(" ")
